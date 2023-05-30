@@ -20,12 +20,6 @@ Se crea un archivo config.js en la carpeta config, éste alojará todas las vari
 * Debe existir como mínimo la URL para conectarme a mi BD de MongoDB (local o en la nube) 
 * Crear archivos de ambiente para desarrollo y producción donde, desarrollo le debe apuntar a la BD en local y prod a la BD de mongo atlas.
 
-## Creando nuestra capa de persistencia: Operando sobre los datos del colegio:
-
-Actualizar la capa de persistencia de nuestra app, para poder manejar las busquedas de username (email) y para los flujos de autenticación:
-
-- Usar la clase StudentsService ya creada previamente, el método se puede llamar: findByUsername
-
 ## Crear el conector para la BD en modo Singleton para garantizar una sola conexión a la misma. 
 Crear una nueva clase mongodb-singleton.js para:
 
