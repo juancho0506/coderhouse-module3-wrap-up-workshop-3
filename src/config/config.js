@@ -24,7 +24,10 @@ export default {
     mongoUrl: process.env.MONGO_URL,
     adminName: process.env.ADMIN_NAME,
     adminPassword: process.env.ADMIN_PASSWORD,
-    gmailAccount: process.env.GMAIL_ACCOUNT,
-    gmailAppPassword: process.env.GMAIL_APP_PASSWD,
+    mailing:{
+        SERVICE: process.env.MAILING_SERVICE,
+        USER: process.env.MAILING_USER,
+        PASSWORD: process.env.MAILING_PASSWORD
+    },
     environment: environment
 };
