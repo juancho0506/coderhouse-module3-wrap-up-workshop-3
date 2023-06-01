@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import config from './config/config.js';
+import MongoSingleton from './config/mongodb-singleton.js';
 import { addLogger } from './config/logger.js';
 
 
@@ -46,18 +47,20 @@ app.use("/api/courses", coursesRouter);
 app.use("/users", usersViewRouter);
 app.use("/api/jwt", jwtRouter);
 
+// app.use(addLogger)
+
+
 const SERVER_PORT = config.port;
 app.listen(SERVER_PORT, () => {
     console.log("Servidor escuchando por el puerto: " + SERVER_PORT);
 });
 
-const connectMongoDB = async ()=>{
+const mongoInstance = async () => {
     try {
-        await mongoose.connect(config.mongoUrl);
-        console.log("Conectado con exito a MongoDB usando Moongose.");
+        await MongoSingleton.getInstance();
     } catch (error) {
-        console.error("No se pudo conectar a la BD usando Moongose: " + error);
+        console.error(error);
         process.exit();
     }
 };
-connectMongoDB();
+mongoInstance();

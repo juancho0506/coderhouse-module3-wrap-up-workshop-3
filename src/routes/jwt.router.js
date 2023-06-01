@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {isValidPassword, generateJWToken, createHash} from '../util.js';
 //Service import
 import {studentService} from '../services/repository/services.js';
+import MailingService from '../services/email/mailing.js';
 
 const router = Router();
 
@@ -59,6 +60,18 @@ router.post("/register",  async (req, res)=>{
     };
     const result = await studentService.createStudent(user);
     res.status(201).send({status: "success", message: "Usuario creado con extito con ID: " + result.id});
+    const miCorreo = {
+        from:'CoderTests',
+        to: user.email,
+        subject:"Te has registrado con éxito!",
+        html:`<div><h1>¡Felicidades! ${user.name}</h1>
+        <p> Bienvenido! Esperamos que lo pases muy bien y aprendas mucho</p>
+        </div>`
+    }
+
+    const mailingService = new MailingService();
+    const correo = await mailingService.sendSimpleMail(miCorreo)
+
 });
 
 export default router;
