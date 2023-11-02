@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import config from './config/config.js';
-import { addLogger } from './config/logger.js';
 
 
 //Routers a importar:
