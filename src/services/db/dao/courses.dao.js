@@ -1,6 +1,6 @@
 import {coursesModel} from "../models/courses.js";
 
-export default class CoursesDao {
+export default class CourseServiceDao {
     constructor() { 
         console.log("Working courses with Database persistence in mongodb");
     }

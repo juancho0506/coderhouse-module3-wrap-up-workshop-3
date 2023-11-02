@@ -1,11 +1,7 @@
-import StudentServiceDao from "../db/dao/students.dao.js";
-import CoursesDao from "../db/dao/courses.dao.js"
+import Students from "../db/dao/students.dao.js";
 
 import StudentRepository from "./students.repository.js";
-import CoursesRepository from "./courses.repository.js";
 
-const studentDao = new StudentServiceDao()
-const coursesDao = new CoursesDao();
+const studentDao = new Students();
 
 export const studentService = new StudentRepository(studentDao);
-export const coursesService = new CoursesRepository(coursesDao);
