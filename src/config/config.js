@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import {Command} from 'commander';
+import { Command } from 'commander';
 
 const program = new Command(); //Crea la instancia de comandos de commander.
 
@@ -15,7 +15,7 @@ console.log("Mode Option: ", program.opts().mode);
 const environment = program.opts().mode;
 
 dotenv.config({
-    path:environment==="production"?"./src/config/.env.production":"./src/config/.env.development"
+    path: environment === "production" ? "./src/config/.env.production" : "./src/config/.env.development"
 });
 
 
@@ -24,5 +24,10 @@ export default {
     mongoUrl: process.env.MONGO_URL,
     adminName: process.env.ADMIN_NAME,
     adminPassword: process.env.ADMIN_PASSWORD,
-    environment: environment
+    environment: environment,
+    mailing: {
+        SERVICE: process.env.MAILING_SERVICE,
+        USER: process.env.MAILING_USER,
+        PASSWORD: process.env.MAILING_PASSWORD
+    }
 };
